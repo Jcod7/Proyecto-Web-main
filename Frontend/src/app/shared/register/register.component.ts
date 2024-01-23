@@ -21,21 +21,8 @@ import { NavComponent } from "../renta/nav/nav.component";
 export class RegisterComponent {
 
   disableSubmitButton = false; // Agrega esta propiedad
-  [x: string]: any;
-
-  /**get nombre() { return this.FormUser.get('nombre') as FormControl }
-  get apellidos() { return this.FormUser.get('apellidos')as FormControl }
-  get CorreoElectronico() { return this.FormUser.get('CorreoElectronico')as FormControl }
-  get telefono() { return this.FormUser.get('telefono')as FormControl }
-  get emailConfirm() { return this.FormUser.get('emailConfirm')as FormControl }
-  get Contraseña() { return this.FormUser.get('Contraseña')as FormControl }
-  get passwordConfirm() { return this.FormUser.get('passwordConfirm')as FormControl }
-  get provincia() { return this.FormUser.get('provincia')as FormControl }
-  get terminos() { return this.FormUser.get('terminos')as FormControl }
-  get Direccion() { return this.FormUser.get('Direccion')as FormControl }
-  get cedula() { return this.FormUser.get('cedula')as FormControl }**/
-
-
+  mismatchedPasswordConfirmation = false;
+  mismatchedEmailConfirmation = false;
 
   FormUser = new FormGroup({
     'nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -63,22 +50,6 @@ export class RegisterComponent {
 
   ) { }
 
-  isValidField(field: string): boolean {
-    const control = this.FormUser.get(field) as FormControl;
-
-    if (control instanceof FormControl) {
-      const isValid = control.valid && control.touched;
-
-      if (!isValid) {
-        console.log(`Campo ${field} no es válido`);
-      }
-
-      return isValid;
-    }
-
-    return false;
-  }
-
   onSubmit() {
     const user: User = {
       Cedula: this.FormUser.value.cedula ?? '',
@@ -89,10 +60,20 @@ export class RegisterComponent {
       Direccion: this.FormUser.value.Direccion ?? '',
       Telefono: this.FormUser.value.telefono ?? '',
     }
-    if (this.FormUser.value.Contraseña != this.FormUser.value.passwordConfirm ||
-      this.FormUser.value.CorreoElectronico != this.FormUser.value.emailConfirm
-    ) {
-      return
+    if (this.FormUser.value.Contraseña !== this.FormUser.value.passwordConfirm) {
+      this.mismatchedPasswordConfirmation = true;
+    } else {
+      this.mismatchedPasswordConfirmation = false;
+    }
+
+    if (this.FormUser.value.CorreoElectronico !== this.FormUser.value.emailConfirm) {
+      this.mismatchedEmailConfirmation = true;
+    } else {
+      this.mismatchedEmailConfirmation = false;
+    }
+
+    if (this.mismatchedPasswordConfirmation || this.mismatchedEmailConfirmation) {
+      return;
     }
     this._userService.singin(user).subscribe(data => {
       this.notificationService.notify('Registrado correctamente.', 2000);

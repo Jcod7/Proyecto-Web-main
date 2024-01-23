@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-10 mx-auto col-lg-7 d-flex align-items-center bg-dark">
           <div class="card-body p-4 p-lg-5 text-white">
-            <form [formGroup]="FormUser" (ngSubmit)="onSubmit()" autocomplete="off">
+            <form [formGroup]="FormUser" (ngSubmit)="onSubmit()" >
               <h1 class="h3 mb-3 fw-normal">Registro de Usuario</h1>
               <!-- Nombres -->
               <div class="mb-12">
@@ -141,6 +141,9 @@
                     <div *ngIf="FormUser.get('emailConfirm')?.errors?.['pattern']">
                       El correo electrónico debe contener un formato válido
                     </div>
+                    <div *ngIf="mismatchedEmailConfirmation" class="alert alert-danger">
+                      Los correos electrónicos no coinciden. Verifica e intenta nuevamente.
+                    </div>
                   </div>
                 </div>
               </div>
@@ -234,8 +237,8 @@
                   <div *ngIf="FormUser.get('passwordConfirm')?.errors?.['pattern']">
                     Mínimo 8 caracteres, al menos una letra mayúscula, una letra minúscula y un número y caracter especial
                   </div>
-                  <div *ngIf="FormUser.get('passwordConfirm')?.value !== FormUser.get('Contraseña')?.value" class="alert alert-danger">
-                    Las contraseñas no coinciden.
+                  <div *ngIf="mismatchedPasswordConfirmation" class="alert alert-danger">
+                    Las contraseñas no coinciden. Verifica e intenta nuevamente.
                   </div>
                 </div>
               </div>
@@ -259,7 +262,7 @@
                 </div>
               </div>
               <div class="col-md-10 mx-auto py-1.5 d-grid">
-                <button class="btn btn-primary" type="submit" [disabled]="disableSubmitButton">Crear</button>
+                <button class="btn btn-primary" type="submit" [disabled]="FormUser.invalid">Crear</button>
               </div>
             </form>
           </div>
