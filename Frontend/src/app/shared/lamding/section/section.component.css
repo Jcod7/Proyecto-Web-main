@@ -1,0 +1,42 @@
+
+.larger-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.0rem; /* Puedes ajustar el tamaño según tus preferencias */
+}
+
+.testimonial-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.route-card .route-image img {
+  height: 250px; /* Puedes ajustar la altura según tus preferencias */
+  object-fit: cover; /* Ajusta el comportamiento de la imagen */
+}
+
+.route-card {
+  border: none; /* Elimina el borde de la tarjeta */
+}
+
+.route-image {
+  overflow: hidden; /* Asegura que la imagen no se desborde de la tarjeta */
+  border-radius: 8px; /* Agrega esquinas redondeadas */
+}
+
+.route-image img {
+  width: 100%; /* Hace que la imagen ocupe todo el ancho de su contenedor */
+  height: 300px; /* Puedes ajustar la altura según tus preferencias */
+  object-fit: cover; /* Ajusta el comportamiento de la imagen */
+}
+
+.route-details {
+  padding: 15px;
+}
+
+.text-justify {
+  text-align: justify;
+}

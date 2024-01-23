@@ -1,0 +1,31 @@
+.catalogo img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    width: 85%;
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+
+}
+
+.card {
+    border-color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+.custom-icon {
+    font-size: 28px;
+    vertical-align: middle;
+}
+
+.fixed-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+}

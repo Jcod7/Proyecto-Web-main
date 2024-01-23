@@ -1,0 +1,28 @@
+/* Estilos generales para los enlaces */
+.btn-grow-on-hover {
+  transition: font-size 0.3s; /* Agrega una transición suave */
+}
+.btn-grow-on-hover:hover {
+  font-size: 125%; /* Ajusta el tamaño según tus necesidades */
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+dropdown-menu {
+    background-color: #343a40;
+    width: 400px;
+    margin-right: 200px;
+}
+.custom-btn-ancho {
+  width: 150px; /* Ajusta el ancho según tus necesidades */
+}
+
+.input-grande {
+  font-size: 18px; /* Ajusta el tamaño de la fuente según tus necesidades */
+}
+
+.input-grande {
+  height: 40px; /* Ajusta la altura según tus necesidades */
+  width: 490px; /* Ajusta el ancho según tus necesidades */
+}
