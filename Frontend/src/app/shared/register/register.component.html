@@ -116,7 +116,7 @@
                     <div *ngIf="FormUser.get('CorreoElectronico')?.errors?.['required']">
                       La CorreoElectronico es obligatoria
                     </div>
-                    <div *ngIf="FormUser.get('CorreoElectronico')?.errors?.['pattern']">
+                    <div *ngIf="FormUser.get('CorreoElectronico')?.errors?.['email']">
                       El correo electrónico debe contener un formato válido
                     </div>
                   </div>
@@ -141,7 +141,7 @@
                     <div *ngIf="FormUser.get('emailConfirm')?.errors?.['pattern']">
                       El correo electrónico debe contener un formato válido
                     </div>
-                    <div *ngIf="mismatchedEmailConfirmation" class="alert alert-danger">
+                    <div *ngIf="mismatchedEmailConfirmation == false">
                       Los correos electrónicos no coinciden. Verifica e intenta nuevamente.
                     </div>
                   </div>

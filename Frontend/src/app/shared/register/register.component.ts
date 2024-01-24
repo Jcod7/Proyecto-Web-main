@@ -27,8 +27,8 @@ export class RegisterComponent {
   FormUser = new FormGroup({
     'nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
     'apellidos': new FormControl('', [Validators.required, Validators.minLength(3)]),
-    'CorreoElectronico': new FormControl('', [Validators.required, Validators.email]),
     'telefono': new FormControl('', [Validators.required,Validators.minLength(10),Validators.pattern(/^[0-9]\d*$/)]),
+    'CorreoElectronico': new FormControl('', [Validators.required, Validators.email]),
     'emailConfirm': new FormControl('', [Validators.required,Validators.email]),
     'Contraseña': new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/), Validators.minLength(8)]),
     'passwordConfirm': new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/), Validators.minLength(8)]),
@@ -62,14 +62,17 @@ export class RegisterComponent {
     }
     if (this.FormUser.value.Contraseña !== this.FormUser.value.passwordConfirm) {
       this.mismatchedPasswordConfirmation = true;
+      console.log("contraseña incorrecta");
     } else {
       this.mismatchedPasswordConfirmation = false;
     }
 
     if (this.FormUser.value.CorreoElectronico !== this.FormUser.value.emailConfirm) {
       this.mismatchedEmailConfirmation = true;
+      console.log("correo incorrecto");
     } else {
       this.mismatchedEmailConfirmation = false;
+      console.log("correo correcto");
     }
 
     if (this.mismatchedPasswordConfirmation || this.mismatchedEmailConfirmation) {
